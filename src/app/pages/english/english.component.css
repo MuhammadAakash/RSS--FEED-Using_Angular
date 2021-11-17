@@ -1,4 +1,12 @@
-/* .card-news-title{
+body{
+    height: 100vh;
+}
+
+
+
+
+
+.card-news-title{
     display: block;
     padding-bottom: 15px;
     font-size: 18px;
@@ -28,4 +36,4 @@
 .news-text-contain{
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
-} */
+} 

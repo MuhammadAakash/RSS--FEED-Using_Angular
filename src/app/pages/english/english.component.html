@@ -10,37 +10,62 @@
 </head>
 <body>
 
-  <div class="card" style="width: 18rem;">
-    <img src="{{RssData.rss.channel[0].image}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{RssData.rss.channel[0].title[0]}}</h5>
-      <div *ngFor="let o of RssData.rss.channel[0].item;">
-        <div class="news-text-contain p-3">
-        <span class="card-text card-contain d-block">{{o.title[0]}}</span>
-        <span class="text-muted d-inline card-subtext"> CNBC: Top News <span class="dot"> </span> {{getDataDiff(o.pubDate)}}</span>
-        </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">NewsFeed</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Technology</a></li>
+              <li><a class="dropdown-item" href="#">Entertainment</a></li>
+              <li><a class="dropdown-item" href="#">Sports</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
-      
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    
+  </nav>
+
+  <img src="{{RssData.rss.channel[0].image[0].url[0]}}" alt="">
+  <h5 class="mb-3 container ">{{RssData.rss.channel[0].title[0]}}</h5>
+  
+  <div class="card mb-3 container">
+    <!-- <img src="{{RssData.rss.channel[0].image[0].url[0]}}" class="card-img-top" alt=" "> -->
+    <div *ngFor="let i of RssData.rss.channel[0].image;">
+      <div>
+      </div>
+    <div *ngFor="let o of RssData.rss.channel[0].item;">
+      <div class="news-text-contain p-3">
+          <!-- <img src="{{i.url[0]}}" alt=""> -->
+          <a href="{{o.link[0]}}"><span class="card-text card-contain d-block"><strong>{{o.title[0]}}</strong></span></a>
+          
+          
+          <span class="card-text card-contain d-block"><i>{{o.description[0]}}</i></span>
+          <span class="text-muted d-inline card-subtext"> CNBC: Top News <span class="dot"> </span> {{getDataDiff(o.pubDate)}}</span>
+          <a href="{{o.link[0]}}"><button>Link</button></a>
+        </div>
+    </div>
+  </div>
   </div>
 
-  <!-- <div class="row pt-2">
-    <div class="col-ms-12">
-        <div class="card">
-        <div class="card-body text-left card-box p-0">
-          <span class="card-text card-news-title display-5 p-3">Treading {{RssData.rss.channel[0].title[0]}} News</span>
-          <div *ngFor="let o of RssData.rss.channel[0].item;">
-            <div class="news-text-contain p-3">
-                <span class="card-text card-contain d-block">{{o.title[0]}}</span>
-                <span class="text-muted d-inline card-subtext"> CNBC: Top News <span class="dot"> </span> {{getDataDiff(o.pubDate)}}</span>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-</div> -->
   
 </body>
 </html>
