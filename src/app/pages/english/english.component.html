@@ -54,22 +54,30 @@
   <div class="card mb-3 my-3 container">
     <!-- <img src="{{RssData.rss.channel[0].image[0].url[0]}}" class="card-img-top" alt=" "> -->
     <div *ngFor="let i of RssData.rss.channel[0].image;">
+      <ul>
+        <li *ngFor="let o of RssData.rss.channel[0].item | paginate: { itemsPerPage: 10, currentPage: page }">
+            <div class="news-text-contain p-3">
+              <strong>{{o.category[0]}}</strong>
+              <!-- <img src="{{i..url[0]}}" alt=""> -->
+              <a href="{{o.link[0]}}"><span
+                  class="card-text card-contain d-block"><strong>{{o.title[0]}}</strong></span>
+              </a>
+    
+    
+              <span class="card-text card-contain d-block"><i>{{o.description[0]}}</i></span>
+              <span class="text-muted d-inline card-subtext"> CNBC: Top News <span class="dot"> </span>
+                {{getDataDiff(o.pubDate)}}</span>
+              <a href="{{o.link[0]}}"><button>Link</button></a>
+              
+            </div>
+          
+        </li>
+      </ul>
       
-      <div *ngFor="let o of RssData.rss.channel[0].item;">
-        <div class="news-text-contain p-3">
-          <strong><li>{{o.category[0]}}</li></strong>
-          <!-- <img src="{{i..url[0]}}" alt=""> -->
-          <a href="{{o.link[0]}}"><span
-              class="card-text card-contain d-block"><strong>{{o.title[0]}}</strong></span>
-          </a>
-
-
-          <span class="card-text card-contain d-block"><i>{{o.description[0]}}</i></span>
-          <span class="text-muted d-inline card-subtext"> CNBC: Top News <span class="dot"> </span>
-            {{getDataDiff(o.pubDate)}}</span>
-          <a href="{{o.link[0]}}"><button>Link</button></a>
-        </div>
+      <div class="text-right">
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
       </div>
+      
     </div>
   </div>
 

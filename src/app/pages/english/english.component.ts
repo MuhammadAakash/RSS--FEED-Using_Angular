@@ -11,6 +11,8 @@ import * as xml2js from 'xml2js';
 })
 export class EnglishComponent implements OnInit {
   
+  page:number=1;
+
   constructor(private http: HttpClient,private route: ActivatedRoute) {}
   RssData!: NewsRss;
   ngOnInit(): void {
