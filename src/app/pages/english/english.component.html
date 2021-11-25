@@ -41,8 +41,11 @@
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <div>
+            <input class="form-control me-2" type="text" id="myInput"  placeholder="Enter title to Search" (keyup) ="myFunc()">
+            
+
+          </div>
         </form>
       </div>
     </div>
@@ -51,12 +54,12 @@
   <img src="{{RssData.rss.channel[0].image[0].url[0]}}" alt="">
  
 
-  <div class="card mb-3 my-3 container">
+  <div class="card mb-3 my-3 container" id="tab">
     <!-- <img src="{{RssData.rss.channel[0].image[0].url[0]}}" class="card-img-top" alt=" "> -->
     <div *ngFor="let i of RssData.rss.channel[0].image;">
       <ul>
-        <li *ngFor="let o of RssData.rss.channel[0].item | paginate: { itemsPerPage: 10, currentPage: page }">
-            <div class="news-text-contain p-3">
+        <ul *ngFor="let o of RssData.rss.channel[0].item | paginate: { itemsPerPage: 200, currentPage: page }">
+            <div class="news-text-contain p-3 a" >
               <strong>{{o.category[0]}}</strong>
               <!-- <img src="{{i..url[0]}}" alt=""> -->
               <a href="{{o.link[0]}}"><span
@@ -71,7 +74,7 @@
               
             </div>
           
-        </li>
+        </ul>
       </ul>
       
       <div class="text-right">
